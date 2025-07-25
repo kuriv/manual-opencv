@@ -176,6 +176,97 @@
             
         </li>
     
+        <li class="chapter " data-level="1.1.4" data-path="图像色彩空间转换.html">
+            
+                <a href="图像色彩空间转换.html">
+            
+                    
+                    图像色彩空间转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5" data-path="图像创建与赋值.html">
+            
+                <a href="图像创建与赋值.html">
+            
+                    
+                    图像创建与赋值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.6" data-path="图像像素读写.html">
+            
+                <a href="图像像素读写.html">
+            
+                    
+                    图像像素读写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.7" data-path="图像像素算术操作.html">
+            
+                <a href="图像像素算术操作.html">
+            
+                    
+                    图像像素算术操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.8" data-path="滚动条操作案例.html">
+            
+                <a href="滚动条操作案例.html">
+            
+                    
+                    滚动条操作案例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.9" data-path="键盘操作案例.html">
+            
+                <a href="键盘操作案例.html">
+            
+                    
+                    键盘操作案例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.10" data-path="颜色表操作.html">
+            
+                <a href="颜色表操作.html">
+            
+                    
+                    颜色表操作
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -333,14 +424,15 @@
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token keyword">const</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    Mat src <span class="token operator">=</span> <span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">&quot;demo.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>src<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    Mat img <span class="token operator">=</span> <span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">&quot;demo.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>img<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;could not load image.\n&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
         <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;demo&quot;</span><span class="token punctuation">,</span> src<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;OpenCV Project&quot;</span><span class="token punctuation">,</span> img<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">waitKey</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">destroyAllWindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -387,7 +479,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"环境配置","level":"1.1.2","depth":2,"next":{"title":"图像读取与显示","level":"1.1.3","depth":2,"path":"docs/图像读取与显示.md","ref":"docs/图像读取与显示.md","articles":[]},"previous":{"title":"安装 OpenCV","level":"1.1.1","depth":2,"path":"docs/安装 OpenCV.md","ref":"docs/安装 OpenCV.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"OpenCV","language":"zh-hans","gitbook":">=3.0.0","description":"OpenCV 手册","direction":"ltr"},"file":{"path":"docs/环境配置.md","mtime":"2025-07-22T10:37:45.798Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-07-22T10:37:48.170Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"环境配置","level":"1.1.2","depth":2,"next":{"title":"图像读取与显示","level":"1.1.3","depth":2,"path":"docs/图像读取与显示.md","ref":"docs/图像读取与显示.md","articles":[]},"previous":{"title":"安装 OpenCV","level":"1.1.1","depth":2,"path":"docs/安装 OpenCV.md","ref":"docs/安装 OpenCV.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"OpenCV","language":"zh-hans","gitbook":">=3.0.0","description":"OpenCV 手册","direction":"ltr"},"file":{"path":"docs/环境配置.md","mtime":"2025-07-25T13:29:46.556Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-07-25T18:37:53.648Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
