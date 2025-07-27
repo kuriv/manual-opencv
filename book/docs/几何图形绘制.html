@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>滚动条操作案例 · OpenCV</title>
+        <title>几何图形绘制 · OpenCV</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -74,10 +74,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="键盘操作案例.html" />
+    <link rel="next" href="多边形绘制.html" />
     
     
-    <link rel="prev" href="图像像素值统计.html" />
+    <link rel="prev" href="通道分离与合并.html" />
     
 
     
@@ -293,7 +293,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.13" data-path="滚动条操作案例.html">
+        <li class="chapter " data-level="1.1.13" data-path="滚动条操作案例.html">
             
                 <a href="滚动条操作案例.html">
             
@@ -358,7 +358,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.18" data-path="几何图形绘制.html">
+        <li class="chapter active" data-level="1.1.18" data-path="几何图形绘制.html">
             
                 <a href="几何图形绘制.html">
             
@@ -458,7 +458,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >滚动条操作案例</a>
+        <a href=".." >几何图形绘制</a>
     </h1>
 </div>
 
@@ -473,81 +473,99 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x6EDA;&#x52A8;&#x6761;&#x64CD;&#x4F5C;&#x6848;&#x4F8B;">&#x6EDA;&#x52A8;&#x6761;&#x64CD;&#x4F5C;&#x6848;&#x4F8B;</h1>
-<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x901A;&#x8FC7;&#x64CD;&#x4F5C;&#x6EDA;&#x52A8;&#x6761;&#x5B9E;&#x65F6;&#x8C03;&#x6574;&#x56FE;&#x50CF;&#x7684;&#x4EAE;&#x5EA6;&#x3002;</p>
+                                <h1 id="&#x51E0;&#x4F55;&#x56FE;&#x5F62;&#x7ED8;&#x5236;">&#x51E0;&#x4F55;&#x56FE;&#x5F62;&#x7ED8;&#x5236;</h1>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5728;&#x539F;&#x56FE;&#x50CF;&#x4E0A;&#x7ED8;&#x5236;&#x77E9;&#x5F62;&#x3002;</p>
 <pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;opencv2/opencv.hpp&gt;</span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> cv<span class="token punctuation">;</span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-Mat img<span class="token punctuation">,</span> result<span class="token punctuation">;</span>
-<span class="token keyword">int</span> brightness <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> _brightness <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-<span class="token keyword">void</span> <span class="token function">callback_brightness</span><span class="token punctuation">(</span><span class="token keyword">int</span> brightness<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    _brightness <span class="token operator">=</span> brightness <span class="token operator">-</span> <span class="token number">50</span><span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Brightness: &quot;</span> <span class="token operator">&lt;&lt;</span> _brightness <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-    <span class="token function">addWeighted</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token function">Scalar</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> _brightness<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token keyword">const</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    img <span class="token operator">=</span> <span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">&quot;demo.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Mat img <span class="token operator">=</span> <span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">&quot;demo.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Rect rect<span class="token punctuation">;</span>
+    rect<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    rect<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    rect<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+    rect<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">300</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>img<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;could not load image.\n&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
         <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+    <span class="token function">rectangle</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> rect<span class="token punctuation">,</span> <span class="token function">Scalar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> img<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">createTrackbar</span><span class="token punctuation">(</span><span class="token string">&quot;Brightness: &quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>brightness<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> callback_brightness<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">waitKey</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">destroyAllWindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>&#x7EE7;&#x7EED;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#xFF0C;&#x5B9E;&#x73B0;&#x540C;&#x65F6;&#x8C03;&#x6574;&#x4EAE;&#x5EA6;&#x4E0E;&#x5BF9;&#x6BD4;&#x5EA6;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5728;&#x539F;&#x56FE;&#x50CF;&#x4E0A;&#x7ED8;&#x5236;&#x5706;&#x5F62;&#x3002;</p>
 <pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;opencv2/opencv.hpp&gt;</span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
 
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> cv<span class="token punctuation">;</span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-Mat img<span class="token punctuation">,</span> result<span class="token punctuation">;</span>
-<span class="token keyword">int</span> brightness <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> _brightness <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> contrast <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
-<span class="token keyword">double</span> _contrast <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
-
-<span class="token keyword">void</span> <span class="token function">callback_brightness</span><span class="token punctuation">(</span><span class="token keyword">int</span> brightness<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    _brightness <span class="token operator">=</span> brightness <span class="token operator">-</span> <span class="token number">50</span><span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Brightness: &quot;</span> <span class="token operator">&lt;&lt;</span> _brightness <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;, Contrast: &quot;</span> <span class="token operator">&lt;&lt;</span> _contrast <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-    <span class="token function">addWeighted</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> _contrast<span class="token punctuation">,</span> <span class="token function">Scalar</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> _brightness<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">void</span> <span class="token function">callback_contrast</span><span class="token punctuation">(</span><span class="token keyword">int</span> contrast<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    _contrast <span class="token operator">=</span> contrast <span class="token operator">/</span> <span class="token number">100.0</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;Brightness: &quot;</span> <span class="token operator">&lt;&lt;</span> _brightness <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;, Contrast: &quot;</span> <span class="token operator">&lt;&lt;</span> _contrast <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-    <span class="token function">addWeighted</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> _contrast<span class="token punctuation">,</span> <span class="token function">Scalar</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> _brightness<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token keyword">const</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    img <span class="token operator">=</span> <span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">&quot;demo.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Mat img <span class="token operator">=</span> <span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">&quot;demo.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>img<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;could not load image.\n&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
         <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+    <span class="token function">circle</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> <span class="token function">Point</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token function">Scalar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> img<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">createTrackbar</span><span class="token punctuation">(</span><span class="token string">&quot;Brightness: &quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>brightness<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> callback_brightness<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">createTrackbar</span><span class="token punctuation">(</span><span class="token string">&quot;Contrast: &quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>contrast<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> callback_contrast<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">waitKey</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">destroyAllWindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5728;&#x539F;&#x56FE;&#x50CF;&#x4E0A;&#x7ED8;&#x5236;&#x7EBF;&#x6BB5;&#x3002;</p>
+<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;opencv2/opencv.hpp&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> cv<span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token keyword">const</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Mat img <span class="token operator">=</span> <span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">&quot;demo.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>img<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;could not load image.\n&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">line</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> <span class="token function">Point</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">Point</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">Scalar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> img<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">waitKey</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">destroyAllWindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5728;&#x539F;&#x56FE;&#x50CF;&#x4E0A;&#x7ED8;&#x5236;&#x692D;&#x5706;&#x5F62;&#x3002;</p>
+<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;opencv2/opencv.hpp&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> cv<span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token keyword">const</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Mat img <span class="token operator">=</span> <span class="token function">imread</span><span class="token punctuation">(</span><span class="token string">&quot;demo.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    RotatedRect rrect<span class="token punctuation">;</span>
+    rrect<span class="token punctuation">.</span>center <span class="token operator">=</span> <span class="token function">Point</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    rrect<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    rrect<span class="token punctuation">.</span>angle <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>img<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;could not load image.\n&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">ellipse</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> rrect<span class="token punctuation">,</span> <span class="token function">Scalar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> LINE_AA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">imshow</span><span class="token punctuation">(</span><span class="token string">&quot;IMG&quot;</span><span class="token punctuation">,</span> img<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">waitKey</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">destroyAllWindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
@@ -580,12 +598,12 @@ Mat img<span class="token punctuation">,</span> result<span class="token punctua
 
             
                 
-                <a href="图像像素值统计.html" class="navigation navigation-prev " aria-label="Previous page: 图像像素值统计">
+                <a href="通道分离与合并.html" class="navigation navigation-prev " aria-label="Previous page: 通道分离与合并">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="键盘操作案例.html" class="navigation navigation-next " aria-label="Next page: 键盘操作案例">
+                <a href="多边形绘制.html" class="navigation navigation-next " aria-label="Next page: 多边形绘制">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -596,7 +614,7 @@ Mat img<span class="token punctuation">,</span> result<span class="token punctua
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"滚动条操作案例","level":"1.1.13","depth":2,"next":{"title":"键盘操作案例","level":"1.1.14","depth":2,"path":"docs/键盘操作案例.md","ref":"docs/键盘操作案例.md","articles":[]},"previous":{"title":"图像像素值统计","level":"1.1.12","depth":2,"path":"docs/图像像素值统计.md","ref":"docs/图像像素值统计.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"OpenCV","language":"zh-hans","gitbook":">=3.0.0","description":"OpenCV 手册","direction":"ltr"},"file":{"path":"docs/滚动条操作案例.md","mtime":"2025-07-25T17:54:50.273Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-07-27T14:00:06.632Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"几何图形绘制","level":"1.1.18","depth":2,"next":{"title":"多边形绘制","level":"1.1.19","depth":2,"path":"docs/多边形绘制.md","ref":"docs/多边形绘制.md","articles":[]},"previous":{"title":"通道分离与合并","level":"1.1.17","depth":2,"path":"docs/通道分离与合并.md","ref":"docs/通道分离与合并.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"OpenCV","language":"zh-hans","gitbook":">=3.0.0","description":"OpenCV 手册","direction":"ltr"},"file":{"path":"docs/几何图形绘制.md","mtime":"2025-07-27T07:19:43.741Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-07-27T14:00:06.632Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
