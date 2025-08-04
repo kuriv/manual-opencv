@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>模块架构 · OpenCV</title>
+        <title>图像基本操作 · OpenCV</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -74,10 +74,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="数据载入、显示与保存.html" />
+    <link rel="next" href="图像基本操作/图像颜色空间.html" />
     
     
-    <link rel="prev" href="环境配置.html" />
+    <link rel="prev" href="数据载入、显示与保存/数据保存.html" />
     
 
     
@@ -163,7 +163,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.3" data-path="模块架构.html">
+        <li class="chapter " data-level="1.1.3" data-path="模块架构.html">
             
                 <a href="模块架构.html">
             
@@ -247,7 +247,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.5" data-path="图像基本操作.html">
+        <li class="chapter active" data-level="1.1.5" data-path="图像基本操作.html">
             
                 <a href="图像基本操作.html">
             
@@ -522,7 +522,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >模块架构</a>
+        <a href=".." >图像基本操作</a>
     </h1>
 </div>
 
@@ -537,68 +537,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x6A21;&#x5757;&#x67B6;&#x6784;">&#x6A21;&#x5757;&#x67B6;&#x6784;</h1>
-<p>&#x6253;&#x5F00; OpenCV &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728; <code>**/opencv-4.12.0/build/include/opencv2</code> &#x76EE;&#x5F55;&#x4E0B;&#x5305;&#x542B;&#x8BB8;&#x591A;&#x529F;&#x80FD;&#x6A21;&#x5757;&#x3002;</p>
-<blockquote>
-<p>calib3d</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x662F;&#x7531; calibration &#x548C; 3D &#x4E24;&#x4E2A;&#x672F;&#x8BED;&#x7684;&#x7F29;&#x5199;&#x7EC4;&#x5408;&#x800C;&#x6210;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x76F8;&#x673A;&#x6807;&#x5B9A;&#x4E0E;&#x7ACB;&#x4F53;&#x89C6;&#x89C9;&#x7B49;&#x529F;&#x80FD;&#xFF0C;&#x5982;&#x7269;&#x4F53;&#x4F4D;&#x59FF;&#x4F30;&#x8BA1;&#x3001;&#x4E09;&#x7EF4;&#x91CD;&#x5EFA;&#x3001;&#x6444;&#x50CF;&#x5934;&#x6807;&#x5B9A;&#x7B49;&#x3002;</p>
-<blockquote>
-<p>core</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3A;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B; OpenCV &#x5E93;&#x7684;&#x57FA;&#x7840;&#x7ED3;&#x6784;&#x4EE5;&#x53CA;&#x57FA;&#x672C;&#x64CD;&#x4F5C;&#xFF0C;&#x5982; OpenCV &#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3001;&#x7ED8;&#x56FE;&#x51FD;&#x6570;&#x3001;&#x6570;&#x7EC4;&#x64CD;&#x4F5C;&#x7B49;&#x3002;</p>
-<blockquote>
-<p>dnn</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3A;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x6784;&#x5EFA;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x3001;&#x52A0;&#x8F7D;&#x5E8F;&#x5217;&#x5316;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<blockquote>
-<p>features2d</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x662F;&#x7531; features &#x548C; 2D &#x4E24;&#x4E2A;&#x672F;&#x8BED;&#x7684;&#x7F29;&#x5199;&#x7EC4;&#x5408;&#x800C;&#x6210;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x7279;&#x5F81;&#x68C0;&#x6D4B;&#x3001;&#x63CF;&#x8FF0;&#x4E0E;&#x5339;&#x914D;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<blockquote>
-<p>flann</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x662F; Fast Library for Approximate Nearest Neighbors &#x7684;&#x7F29;&#x5199;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x5FEB;&#x901F;&#x8FD1;&#x4F3C;&#x8FD1;&#x90BB;&#x641C;&#x7D22;&#x4E0E;&#x805A;&#x7C7B;&#x7B49;&#x3002;</p>
-<blockquote>
-<p>gapi</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3B;&#x8981;&#x4F5C;&#x4E3A;&#x6846;&#x67B6;&#xFF0C;&#x65E8;&#x5728;&#x52A0;&#x901F;&#x5E38;&#x89C4;&#x7684;&#x56FE;&#x50CF;&#x5904;&#x7406;&#x3002;</p>
-<blockquote>
-<p>highgui</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x662F;&#x9AD8;&#x5C42; GUI &#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x521B;&#x5EFA;&#x548C;&#x64CD;&#x4F5C;&#x663E;&#x793A;&#x56FE;&#x50CF;&#x7684;&#x7A97;&#x53E3;&#x3001;&#x5904;&#x7406;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;&#x4EE5;&#x53CA;&#x952E;&#x76D8;&#x547D;&#x4EE4;&#x3001;&#x63D0;&#x4F9B;&#x56FE;&#x5F62;&#x4EA4;&#x4E92;&#x53EF;&#x89C6;&#x5316;&#x754C;&#x9762;&#x7B49;&#x3002;</p>
-<blockquote>
-<p>imgcodecs</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x56FE;&#x50CF;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x4E0E;&#x4FDD;&#x5B58;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<blockquote>
-<p>imgproc</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x662F;&#x7531; image &#x548C; process &#x4E24;&#x4E2A;&#x5355;&#x8BCD;&#x7684;&#x7F29;&#x5199;&#x7EC4;&#x6210;&#x800C;&#x6210;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x56FE;&#x50CF;&#x6EE4;&#x6CE2;&#x3001;&#x51E0;&#x4F55;&#x53D8;&#x6362;&#x3001;&#x76F4;&#x65B9;&#x56FE;&#x3001;&#x7279;&#x5F81;&#x68C0;&#x6D4B;&#x4E0E;&#x76EE;&#x6807;&#x68C0;&#x6D4B;&#x7B49;&#x3002;</p>
-<blockquote>
-<p>ml</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3A;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x7EDF;&#x8BA1;&#x5206;&#x7C7B;&#x3001;&#x56DE;&#x5F52;&#x548C;&#x6570;&#x636E;&#x805A;&#x7C7B;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<blockquote>
-<p>objdetect</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3A;&#x76EE;&#x6807;&#x68C0;&#x6D4B;&#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x56FE;&#x50CF;&#x76EE;&#x6807;&#x68C0;&#x6D4B;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<blockquote>
-<p>photo</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3A;&#x8BA1;&#x7B97;&#x6444;&#x5F71;&#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x56FE;&#x50CF;&#x4FEE;&#x590D;&#x548C;&#x53BB;&#x566A;&#x7B49;&#x5DE5;&#x4F5C;&#x3002;</p>
-<blockquote>
-<p>stitching</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3A;&#x56FE;&#x50CF;&#x62FC;&#x63A5;&#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x7279;&#x5F81;&#x70B9;&#x5BFB;&#x627E;&#x4E0E;&#x5339;&#x914D;&#x7B97;&#x6CD5;&#x3001;&#x4F30;&#x8BA1;&#x65CB;&#x8F6C;&#x3001;&#x81EA;&#x52A8;&#x6821;&#x51C6;&#x3001;&#x63A5;&#x7F1D;&#x4F30;&#x8BA1;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<blockquote>
-<p>video</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3A;&#x89C6;&#x9891;&#x5206;&#x6790;&#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x8FD0;&#x52A8;&#x4F30;&#x8BA1;&#x3001;&#x80CC;&#x666F;&#x5206;&#x79BB;&#x3001;&#x5BF9;&#x8C61;&#x8DDF;&#x8E2A;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<blockquote>
-<p>videoio</p>
-</blockquote>
-<p>&#x8BE5;&#x6A21;&#x5757;&#x4E3A;&#x89C6;&#x9891;&#x8F93;&#x5165;/&#x8F93;&#x51FA;&#x6A21;&#x5757;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x8BFB;&#x53D6;/&#x5199;&#x5165;&#x89C6;&#x9891;&#x6216;&#x56FE;&#x50CF;&#x5E8F;&#x5217;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
+                                <h1 id="&#x56FE;&#x50CF;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">&#x56FE;&#x50CF;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h1>
 
                                 
                                 </section>
@@ -626,12 +565,12 @@
 
             
                 
-                <a href="环境配置.html" class="navigation navigation-prev " aria-label="Previous page: 环境配置">
+                <a href="数据载入、显示与保存/数据保存.html" class="navigation navigation-prev " aria-label="Previous page: 数据保存">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="数据载入、显示与保存.html" class="navigation navigation-next " aria-label="Next page: 数据载入、显示与保存">
+                <a href="图像基本操作/图像颜色空间.html" class="navigation navigation-next " aria-label="Next page: 图像颜色空间">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -642,7 +581,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"模块架构","level":"1.1.3","depth":2,"next":{"title":"数据载入、显示与保存","level":"1.1.4","depth":2,"path":"docs/数据载入、显示与保存.md","ref":"docs/数据载入、显示与保存.md","articles":[{"title":"图像存储容器","level":"1.1.4.1","depth":3,"path":"docs/数据载入、显示与保存/图像存储容器.md","ref":"docs/数据载入、显示与保存/图像存储容器.md","articles":[]},{"title":"图像读取显示","level":"1.1.4.2","depth":3,"path":"docs/数据载入、显示与保存/图像读取显示.md","ref":"docs/数据载入、显示与保存/图像读取显示.md","articles":[]},{"title":"视频加载与摄像头调用","level":"1.1.4.3","depth":3,"path":"docs/数据载入、显示与保存/视频加载与摄像头调用.md","ref":"docs/数据载入、显示与保存/视频加载与摄像头调用.md","articles":[]},{"title":"数据保存","level":"1.1.4.4","depth":3,"path":"docs/数据载入、显示与保存/数据保存.md","ref":"docs/数据载入、显示与保存/数据保存.md","articles":[]}]},"previous":{"title":"环境配置","level":"1.1.2","depth":2,"path":"docs/环境配置.md","ref":"docs/环境配置.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"OpenCV","language":"zh-hans","gitbook":">=3.0.0","description":"OpenCV 手册","direction":"ltr"},"file":{"path":"docs/模块架构.md","mtime":"2025-08-03T15:45:43.417Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-04T17:51:08.202Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图像基本操作","level":"1.1.5","depth":2,"next":{"title":"图像颜色空间","level":"1.1.5.1","depth":3,"path":"docs/图像基本操作/图像颜色空间.md","ref":"docs/图像基本操作/图像颜色空间.md","articles":[]},"previous":{"title":"数据保存","level":"1.1.4.4","depth":3,"path":"docs/数据载入、显示与保存/数据保存.md","ref":"docs/数据载入、显示与保存/数据保存.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"OpenCV","language":"zh-hans","gitbook":">=3.0.0","description":"OpenCV 手册","direction":"ltr"},"file":{"path":"docs/图像基本操作.md","mtime":"2025-08-04T13:53:51.897Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-04T17:51:08.202Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
